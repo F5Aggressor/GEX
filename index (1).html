@@ -19,27 +19,27 @@
         <!-- Info container for Call/Put Interest and Ticker Symbol -->
         <div class="info-container">
             <!-- Call Interest box -->
-            <div id="totalInterestBox" class="interest-box call-interest">
+            <div class="interest-box call-interest">
                 Call Interest: <span id="totalCallInterest">-</span>
             </div>
 
             <!-- Put Interest box -->
-            <div id="totalInterestBox" class="interest-box put-interest">
+            <div class="interest-box put-interest">
                 Put Interest: <span id="totalPutInterest">-</span>
             </div>
 
             <!-- Current Price box -->
-            <div id="currentPriceBox" class="price-box">
+            <div class="price-box">
                 Current Price: $<span id="priceValue">-</span>
             </div>
 
             <!-- Overall OI box -->
-            <div id="overallOIBox" class="oi-box">
+            <div class="oi-box">
                 Overall OI: <span id="overallOIValue">-</span>
             </div>
 
             <!-- Ticker Symbol box -->
-            <div id="tickerBox" class="ticker-box">
+            <div class="ticker-box">
                 Ticker: <span id="tickerSymbol">-</span>
             </div>
         </div>
@@ -48,6 +48,14 @@
         <div class="input-section">
             <label for="expirationDates">Select Expiration Date:</label>
             <select id="expirationDates" onchange="updateOptionsData()"></select>
+        </div>
+
+        <!-- GEX Levels Section -->
+        <div class="gex-container">
+            <h2>Gamma Exposure (GEX) Levels</h2>
+            <div class="gex-level">Total Call GEX: <span id="gexLevel1">-</span></div>
+            <div class="gex-level">Total Put GEX: <span id="gexLevel2">-</span></div>
+            <div class="gex-level">Zero Gamma: <span id="gexLevel3">-</span></div>
         </div>
 
         <!-- Chart container -->
