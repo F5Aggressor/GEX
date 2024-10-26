@@ -66,38 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function calculateGEX(callOptions, putOptions) {
         const contractSize = 100;
-        const callGEXLevels = callOptions.map(option => ({
+        const gexData = [...callOptions, ...putOptions].map(option => ({
             strike: option.strike,
             gex: option.gamma * option.delta * option.openInterest * contractSize
-        })).sort((a, b) => b.gex - a.gex).slice(0, 3);
+        }));
 
-        const putGEXLevels = putOptions.map(option => ({
-            strike: option.strike,
-            gex: option.gamma * option.delta * option.openInterest * contractSize
-        })).sort((a, b) => b.gex - a.gex).slice(0, 3);
+        const closestGEX = gexData
+            .sort((a, b) => Math.abs(a.strike - currentPrice) - Math.abs(b.strike - currentPrice))
+            .slice(0, 3);
 
         const gexTableBody = document.getElementById("gexLevelsTable");
         gexTableBody.innerHTML = "";
 
-        for (let i = 0; i < 3; i++) {
-            const callGEX = callGEXLevels[i] ? callGEXLevels[i].gex.toFixed(2) : "-";
-            const putGEX = putGEXLevels[i] ? putGEXLevels[i].gex.toFixed(2) : "-";
-            const strikePrice = callGEXLevels[i]?.strike || putGEXLevels[i]?.strike || "-";
+        closestGEX.forEach(item => {
+            const row = document.createElement
 
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${strikePrice}</td>
-                <td>${callGEX}</td>
-                <td>${putGEX}</td>
-            `;
-            gexTableBody.appendChild(row);
-        }
-    }
-
-    // Adding event listener to handle Enter key submission
-    document.getElementById('stockTicker').addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            getOptionsData();
-        }
-    });
-});
