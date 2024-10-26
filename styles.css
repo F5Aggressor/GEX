@@ -130,6 +130,46 @@ canvas {
     display: inline-block;
 }
 
+/* Ticker Box */
+.ticker-box {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1); /* Light translucent background */
+    padding: 12px;
+    border: 2px solid #666; /* Darker border */
+    border-radius: 8px;
+    color: #f4f4f4; /* Light text */
+    margin: 0 10px;
+    display: inline-block;
+}
+
+/* GEX Levels Container */
+.gex-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #343a40; /* Dark background for GEX section */
+    border-radius: 8px;
+    color: #e0e0e0; /* Light text color */
+    display: flex;
+    justify-content: space-around; /* Space the elements evenly */
+    align-items: center;
+    gap: 15px; /* Space between items */
+    flex-wrap: wrap;
+}
+
+/* Individual GEX Level Boxes */
+.gex-level {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1); /* Light translucent background */
+    padding: 10px 20px;
+    border: 2px solid #555; /* Dark border */
+    border-radius: 8px;
+    color: #f4f4f4; /* Light text */
+    text-align: center;
+    min-width: 120px;
+}
+
 /* Media Query for small screens */
 @media (max-width: 768px) {
     input[type="text"] {
@@ -145,3 +185,4 @@ canvas {
         flex-direction: column; /* Stack elements on top of each other */
     }
 }
+
