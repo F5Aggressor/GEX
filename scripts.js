@@ -101,6 +101,12 @@ function updateOptionsData() {
     // Update Overall OI
     updateOverallOI(totalCallInterest, totalPutInterest);
 
+    // Calculate GEX
+    const gexLevels = calculateGEX(callOptions, putOptions);
+    document.getElementById("gexLevel1").textContent = gexLevels.totalCallGEX || "-";
+    document.getElementById("gexLevel2").textContent = gexLevels.totalPutGEX || "-";
+    document.getElementById("gexLevel3").textContent = gexLevels.zeroGamma || "-";
+
     const chartData = {
         strikes,
         callsOI,
@@ -117,6 +123,31 @@ function updateOverallOI(totalCallInterest, totalPutInterest) {
     
     // Add a "+" sign if the overall OI is positive
     oiBox.textContent = (overallOI > 0 ? '+' : '') + overallOI;
+}
+
+// Calculate GEX based on gamma, delta, and open interest
+function calculateGEX(callOptions, putOptions) {
+    let totalCallGEX = 0;
+    let totalPutGEX = 0;
+    const contractSize = 100;
+
+    callOptions.forEach(option => {
+        const { gamma, delta, openInterest } = option;
+        const gex = gamma * delta * openInterest * contractSize;
+        totalCallGEX += gex;
+    });
+
+    putOptions.forEach(option => {
+        const { gamma, delta, openInterest } = option;
+        const gex = gamma * delta * openInterest * contractSize;
+        totalPutGEX += gex;
+    });
+
+    return {
+        totalCallGEX: totalCallGEX.toFixed(2),
+        totalPutGEX: totalPutGEX.toFixed(2),
+        zeroGamma: 0 // You can define this based on further analysis
+    };
 }
 
 function renderChart(data, currentPrice) {
