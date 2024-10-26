@@ -18,30 +18,11 @@
 
         <!-- Info container for Call/Put Interest and Ticker Symbol -->
         <div class="info-container">
-            <!-- Call Interest box -->
-            <div class="interest-box call-interest">
-                Call Interest: <span id="totalCallInterest">-</span>
-            </div>
-
-            <!-- Put Interest box -->
-            <div class="interest-box put-interest">
-                Put Interest: <span id="totalPutInterest">-</span>
-            </div>
-
-            <!-- Current Price box -->
-            <div class="price-box">
-                Current Price: $<span id="priceValue">-</span>
-            </div>
-
-            <!-- Overall OI box -->
-            <div class="oi-box">
-                Overall OI: <span id="overallOIValue">-</span>
-            </div>
-
-            <!-- Ticker Symbol box -->
-            <div class="ticker-box">
-                Ticker: <span id="tickerSymbol">-</span>
-            </div>
+            <div class="interest-box call-interest">Call Interest: <span id="totalCallInterest">-</span></div>
+            <div class="interest-box put-interest">Put Interest: <span id="totalPutInterest">-</span></div>
+            <div class="price-box">Current Price: $<span id="priceValue">-</span></div>
+            <div class="oi-box">Overall OI: <span id="overallOIValue">-</span></div>
+            <div class="ticker-box">Ticker: <span id="tickerSymbol">-</span></div>
         </div>
 
         <!-- Dropdown for Expiration Dates -->
@@ -53,9 +34,18 @@
         <!-- GEX Levels Section -->
         <div class="gex-container">
             <h2>Gamma Exposure (GEX) Levels</h2>
-            <div class="gex-level">Total Call GEX: <span id="gexLevel1">-</span></div>
-            <div class="gex-level">Total Put GEX: <span id="gexLevel2">-</span></div>
-            <div class="gex-level">Zero Gamma: <span id="gexLevel3">-</span></div>
+            <table class="gex-table">
+                <thead>
+                    <tr>
+                        <th>Strike Price</th>
+                        <th>Call GEX</th>
+                        <th>Put GEX</th>
+                    </tr>
+                </thead>
+                <tbody id="gexLevelsTable">
+                    <!-- Rows will be added here dynamically via JavaScript -->
+                </tbody>
+            </table>
         </div>
 
         <!-- Chart container -->
@@ -67,3 +57,4 @@
     <script src="scripts.js"></script>
 </body>
 </html>
+
