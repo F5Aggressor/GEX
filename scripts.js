@@ -79,5 +79,24 @@ document.addEventListener("DOMContentLoaded", function () {
         gexTableBody.innerHTML = "";
 
         closestGEX.forEach(item => {
-            const row = document.createElement
+            const row = document.createElementHere's the continuation and final part of the JavaScript code (`scripts.js`):
+
+```javascript
+        closestGEX.forEach(item => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${item.strike}</td>
+                <td>${item.gex.toFixed(2)}</td>
+            `;
+            gexTableBody.appendChild(row);
+        });
+    }
+
+    // Adding event listener to handle Enter key submission
+    document.getElementById('stockTicker').addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            getOptionsData();
+        }
+    });
+});
 
