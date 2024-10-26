@@ -31,26 +31,25 @@
             <select id="expirationDates" onchange="updateOptionsData()"></select>
         </div>
 
-        <!-- GEX Levels Section -->
+        <!-- Chart container -->
+        <div class="canvas-container">
+            <canvas id="optionsChart"></canvas>
+        </div>
+
+        <!-- GEX Levels Section (moved below the chart) -->
         <div class="gex-container">
-            <h2>Gamma Exposure (GEX) Levels</h2>
+            <h2>Gamma Exposure (GEX) Levels Near Current Price</h2>
             <table class="gex-table">
                 <thead>
                     <tr>
                         <th>Strike Price</th>
-                        <th>Call GEX</th>
-                        <th>Put GEX</th>
+                        <th>GEX</th>
                     </tr>
                 </thead>
                 <tbody id="gexLevelsTable">
                     <!-- Rows will be added here dynamically via JavaScript -->
                 </tbody>
             </table>
-        </div>
-
-        <!-- Chart container -->
-        <div class="canvas-container">
-            <canvas id="optionsChart"></canvas>
         </div>
     </div>
 
